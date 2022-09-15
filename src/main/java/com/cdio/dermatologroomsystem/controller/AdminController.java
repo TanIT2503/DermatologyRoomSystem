@@ -37,7 +37,7 @@ public class AdminController {
 		adminDto.setMedicalId(new Medical());
 		model.addAttribute("adminDto", adminDto);
 		model.addAttribute("medical", medicalService.findAll());
-		return "admin/create";
+		return "/admin/create";
 	}
 	@PostMapping("/create")
 	public String create(@ModelAttribute("admin") Admin admin, Model model){

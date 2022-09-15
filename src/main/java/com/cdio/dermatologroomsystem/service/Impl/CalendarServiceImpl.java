@@ -26,7 +26,7 @@ public class CalendarServiceImpl implements CalenderService {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(int id) {
         Calendar calendar = calenderRepository.findById(id).orElse(null);
         if (calendar!=null){
             calenderRepository.save(calendar);
@@ -39,7 +39,7 @@ public class CalendarServiceImpl implements CalenderService {
     }
 
     @Override
-    public Calendar findById(String id) {
+    public Calendar findById(int id) {
         return calenderRepository.findById(id).orElse(null);
     }
 }

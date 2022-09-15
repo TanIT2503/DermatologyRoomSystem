@@ -10,7 +10,7 @@ import java.util.List;
 public interface CalenderService {
     List<Calendar> findAllByTime(String time);
     void add(Calendar calendar);
-    void delete(String id);
+    void delete(int id);
     void update(Calendar calendar);
-    Calendar findById(String id);
+    Calendar findById(int id);
 }

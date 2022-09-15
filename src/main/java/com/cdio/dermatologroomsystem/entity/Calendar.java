@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "calendar")
 public class Calendar {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cal_id;
     private String cal_time;
 

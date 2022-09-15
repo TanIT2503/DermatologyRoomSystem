@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CalenderRepository extends JpaRepository<Calendar, String> {
+public interface CalenderRepository extends JpaRepository<Calendar, Integer> {
     @Query(value = "select * from CALENDAR where cal_time = :cal_time", nativeQuery = true, countQuery = "select * from CALENDAR where (cal_time = :cal_time) xyz")
     List<Calendar> findAllByTime(@Param("cal_time") String cal_time);
 

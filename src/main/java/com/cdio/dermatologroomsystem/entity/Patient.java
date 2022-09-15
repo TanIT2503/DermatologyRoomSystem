@@ -10,12 +10,13 @@ import java.util.List;
 @Table(name = "patient")
 public class Patient {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pa_id;
     private String pa_name;
     private String pa_birthday;
     private boolean pa_gender;
     private String pa_address;
+    private String pa_phone;
     private String pa_id_card;
     private String pa_email;
     private String username;
@@ -41,6 +42,14 @@ public class Patient {
 
     public void setCalendarList(List<Calendar> calendarList) {
         this.calendarList = calendarList;
+    }
+
+    public String getPa_phone() {
+        return pa_phone;
+    }
+
+    public void setPa_phone(String pa_phone) {
+        this.pa_phone = pa_phone;
     }
 
     public String getPa_name() {

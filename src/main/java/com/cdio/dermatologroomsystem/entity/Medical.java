@@ -3,10 +3,12 @@ package com.cdio.dermatologroomsystem.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name="MEDICAL")
 public class Medical {
 	@Id
 	private String medicalId;
@@ -14,7 +16,7 @@ public class Medical {
 	private String medicalImage;
 	private String medicalSymptom;
 
-	@OneToMany(mappedBy = "AdminId")
+	@OneToMany(mappedBy = "adminId")
 	List<Admin> AdminList = new ArrayList<>();
 
 	public Medical() {

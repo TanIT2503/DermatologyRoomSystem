@@ -26,7 +26,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(int id) {
         Patient patient = patientRepository.findById(id).orElse(null);
         if (patient!=null){
             patientRepository.delete(patient);
@@ -40,7 +40,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Patient findById(String id) {
+    public Patient findById(int id) {
         return patientRepository.findById(id).orElse(null);
     }
 }

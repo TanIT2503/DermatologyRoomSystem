@@ -1,9 +1,6 @@
 package com.cdio.dermatologroomsystem.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +8,8 @@ import java.util.List;
 @Table(name="MEDICAL")
 public class Medical {
 	@Id
-	private String medicalId;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int medicalId;
 	private String medicalName;
 	private String medicalImage;
 	private String medicalSymptom;

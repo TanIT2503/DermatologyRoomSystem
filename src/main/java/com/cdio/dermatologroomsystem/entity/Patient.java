@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String pa_id;
+    private int pa_id;
     private String pa_name;
     private String pa_birthday;
     private boolean pa_gender;

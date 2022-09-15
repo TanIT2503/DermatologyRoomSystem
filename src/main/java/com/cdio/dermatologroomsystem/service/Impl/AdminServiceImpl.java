@@ -10,11 +10,12 @@ import java.util.List;
 
 @Service
 public class AdminServiceImpl implements AdminService {
+
 	@Autowired
 	private AdminRepository adminRepository;
-
 	@Override
 	public List<Admin> findAll() {
+
 		return adminRepository.findAll();
 	}
 
@@ -24,23 +25,22 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<Admin> findAllByName(String adminName){
-		return adminRepository.findAllByName(adminName);
+	public List<Admin> findAllByName(String adminName) {
+		return null;
 	}
 
 	@Override
-	public void update(Admin admin){
-		adminRepository.save(admin);
-	}
+	public void update(Admin admin) {
 
-
-	@Override
-	public void delete(String adminId){
-		adminRepository.deleteById(adminId);
 	}
 
 	@Override
-	public Admin findById(String adminId){
-		return adminRepository.findById(adminId).orElse(null);
+	public void delete(int adminId) {
+
+	}
+
+	@Override
+	public Admin findById(int adminId) {
+		return null;
 	}
 }

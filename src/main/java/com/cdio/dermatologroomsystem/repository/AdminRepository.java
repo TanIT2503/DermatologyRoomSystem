@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, String> {
 	@Query(value = "SELECT * FROM ADMIN WHERE (ad_name like concat('%', :ad_name, '%'))", nativeQuery = true)
-	List<Admin> findAllByName(@Param("ad_name") String adminName);
+	List<Admin> findAll(@Param("ad_name") String adminName);
 
-	List<Admin> findAll();
 }

@@ -1,15 +1,12 @@
-package com.cdio.dermatologroomsystem.entity;
+package com.cdio.dermatologroomsystem.dto;
 
+import com.cdio.dermatologroomsystem.entity.Medical;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
-@Entity
-@Table
-public class Admin {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+public class AdminDto {
 	private int adminId;
 	private String adminName;
 	@DateTimeFormat(pattern = "yyyy-MM-dddd")
@@ -20,11 +17,22 @@ public class Admin {
 	private String adminEmail;
 	private String adminIdCard;
 	private String UserName;
-
-	@ManyToOne(targetEntity = Medical.class)
 	private Medical medicalId;
 
-	public Admin() {
+	public AdminDto() {
+	}
+
+	public AdminDto(int adminId , String adminName , Date adminBirthday , boolean adminGender , String adminAddress , String adminNumberPhone , String adminEmail , String adminIdCard , String userName , Medical medicalId) {
+		this.adminId = adminId;
+		this.adminName = adminName;
+		this.adminBirthday = adminBirthday;
+		this.adminGender = adminGender;
+		this.adminAddress = adminAddress;
+		this.adminNumberPhone = adminNumberPhone;
+		this.adminEmail = adminEmail;
+		this.adminIdCard = adminIdCard;
+		UserName = userName;
+		this.medicalId = medicalId;
 	}
 
 	public int getAdminId() {
@@ -104,19 +112,6 @@ public class Admin {
 	}
 
 	public void setMedicalId(Medical medicalId) {
-		this.medicalId = medicalId;
-	}
-
-	public Admin(int adminId , String adminName , Date adminBirthday , boolean adminGender , String adminAddress , String adminNumberPhone , String adminEmail , String adminIdCard , String userName , Medical medicalId) {
-		this.adminId = adminId;
-		this.adminName = adminName;
-		this.adminBirthday = adminBirthday;
-		this.adminGender = adminGender;
-		this.adminAddress = adminAddress;
-		this.adminNumberPhone = adminNumberPhone;
-		this.adminEmail = adminEmail;
-		this.adminIdCard = adminIdCard;
-		UserName = userName;
 		this.medicalId = medicalId;
 	}
 }

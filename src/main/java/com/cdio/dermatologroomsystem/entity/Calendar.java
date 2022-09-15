@@ -3,10 +3,10 @@ package com.cdio.dermatologroomsystem.entity;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "calendar")
 public class Calendar {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int cal_id;
     private String cal_time;
 
@@ -15,12 +15,6 @@ public class Calendar {
     private Patient patient;
 
     public Calendar() {
-    }
-
-    public Calendar(int cal_id , String cal_time , Patient patient) {
-        this.cal_id = cal_id;
-        this.cal_time = cal_time;
-        this.patient = patient;
     }
 
     public int getCal_id() {

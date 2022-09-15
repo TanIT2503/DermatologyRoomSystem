@@ -4,18 +4,18 @@ import com.cdio.dermatologroomsystem.entity.Patient;
 
 
 public class CalenderDto {
-    private String cal_id;
+    private int cal_id;
     private String cal_time;
     private Patient patient;
 
     public CalenderDto() {
     }
 
-    public String getCal_id() {
+    public int getCal_id() {
         return cal_id;
     }
 
-    public void setCal_id(String cal_id) {
+    public void setCal_id(int cal_id) {
         this.cal_id = cal_id;
     }
 

@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "patient")
 public class Patient {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int pa_id;
     private String pa_name;
     private String pa_birthday;
@@ -27,24 +27,20 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(int pa_id , String pa_name , String pa_birthday , boolean pa_gender , String pa_address , String pa_id_card , String pa_email , String username , List<Calendar> calendarList) {
-        this.pa_id = pa_id;
-        this.pa_name = pa_name;
-        this.pa_birthday = pa_birthday;
-        this.pa_gender = pa_gender;
-        this.pa_address = pa_address;
-        this.pa_id_card = pa_id_card;
-        this.pa_email = pa_email;
-        this.username = username;
-        this.calendarList = calendarList;
-    }
-
     public int getPa_id() {
         return pa_id;
     }
 
     public void setPa_id(int pa_id) {
         this.pa_id = pa_id;
+    }
+
+    public List<Calendar> getCalendarList() {
+        return calendarList;
+    }
+
+    public void setCalendarList(List<Calendar> calendarList) {
+        this.calendarList = calendarList;
     }
 
     public String getPa_name() {
@@ -101,13 +97,5 @@ public class Patient {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public List<Calendar> getCalendarList() {
-        return calendarList;
-    }
-
-    public void setCalendarList(List<Calendar> calendarList) {
-        this.calendarList = calendarList;
     }
 }

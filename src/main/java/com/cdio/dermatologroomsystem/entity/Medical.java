@@ -20,19 +20,19 @@ public class Medical {
 	public Medical() {
 	}
 
-	public Medical(String medicalId , String medicalName , String medicalImage , String medicalSymptom , List<Admin> adminList) {
+	public Medical(int medicalId , String medicalName , String medicalImage , String medicalSymptom , List<Admin> adminList) {
 		this.medicalId = medicalId;
 		this.medicalName = medicalName;
 		this.medicalImage = medicalImage;
-		this.medicalSymptom = Medical.this.medicalSymptom;
+		this.medicalSymptom = medicalSymptom;
 		AdminList = adminList;
 	}
 
-	public String getMedicalId() {
+	public int getMedicalId() {
 		return medicalId;
 	}
 
-	public void setMedicalId(String medicalId) {
+	public void setMedicalId(int medicalId) {
 		this.medicalId = medicalId;
 	}
 

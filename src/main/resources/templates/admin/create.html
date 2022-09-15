@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<form th:action="@{/admin/create}" method="post" th:object="${adminDto}">
+	<div class="form-group">
+		<label for="name"><b>Name</b></label>
+		<input type="text" class="form-control" id="name" th:field="*{adminName}" placeholder="Name">
+	</div>
+	<div class="form-group">
+		<label for="birthday"><b>Birthday</b></label>
+		<input type="text" class="form-control" id="birthday" th:field="*{adminName}" placeholder="Birthday">
+	</div>
+	<div class="col-md-6 mb-4">
+		<h6 class="mb-2 pb-1">Gender: </h6>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio" name="inlineRadioOptions"
+			       id="femaleGender" value="option1" checked
+			       th:field="*{adminGender}" th:value="false" />
+			<label class="form-check-label" for="femaleGender">Female</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio" name="inlineRadioOptions"
+			       id="maleGender" value="option2" th:field="*{adminGender}"
+			       th:value="true" />
+			<label class="form-check-label" for="maleGender">Male</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="address"><b>Address</b></label>
+		<input type="text" class="form-control" id="address" th:field="*{adminAddress}" placeholder="Address">
+	</div>
+	<div class="form-group">
+		<label for="phone"><b>phone</b></label>
+		<input type="text" class="form-control" id="phone" th:field="*{adminNumberPhone}" placeholder="Phone">
+	</div>
+	<div class="form-group">
+		<label for="email"><b>Email</b></label>
+		<input type="text" class="form-control" id="email" th:field="*{adminAddress}" placeholder="Email">
+	</div>
+	<div class="form-group">
+		<label for="idcard"><b>Id Card</b></label>
+		<input type="text" class="form-control" id="idcard" th:field="*{adminIdCard}" placeholder="idcard">
+	</div>
+	<div class="form-group">
+		<label for="username"><b>Username</b></label>
+		<input type="text" class="form-control" id="username" th:field="*{userName}" placeholder="username">
+	</div>
+	<div class="mt-4 pt-2">
+		<input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+	</div>
+</form>
+</body>
+</html>

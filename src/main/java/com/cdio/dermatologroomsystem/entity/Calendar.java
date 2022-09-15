@@ -3,9 +3,11 @@ package com.cdio.dermatologroomsystem.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "calendar")
 public class Calendar {
     @Id
-    private String cal_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int cal_id;
     private String cal_time;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -15,11 +17,11 @@ public class Calendar {
     public Calendar() {
     }
 
-    public String getCal_id() {
+    public int getCal_id() {
         return cal_id;
     }
 
-    public void setCal_id(String cal_id) {
+    public void setCal_id(int cal_id) {
         this.cal_id = cal_id;
     }
 

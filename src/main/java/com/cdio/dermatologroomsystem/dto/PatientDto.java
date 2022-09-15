@@ -1,7 +1,7 @@
 package com.cdio.dermatologroomsystem.dto;
 
 public class PatientDto {
-    private String pa_id;
+    private int pa_id;
     private String pa_name;
     private String pa_birthday;
     private boolean pa_gender;
@@ -13,11 +13,11 @@ public class PatientDto {
     public PatientDto() {
     }
 
-    public String getPa_id() {
+    public int getPa_id() {
         return pa_id;
     }
 
-    public void setPa_id(String pa_id) {
+    public void setPa_id(int pa_id) {
         this.pa_id = pa_id;
     }
 

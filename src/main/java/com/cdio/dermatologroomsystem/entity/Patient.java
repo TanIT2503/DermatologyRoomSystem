@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "patient")
 public class Patient {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String pa_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int pa_id;
     private String pa_name;
     private String pa_birthday;
     private boolean pa_gender;
@@ -26,12 +27,20 @@ public class Patient {
     public Patient() {
     }
 
-    public String getPa_id() {
+    public int getPa_id() {
         return pa_id;
     }
 
-    public void setPa_id(String pa_id) {
+    public void setPa_id(int pa_id) {
         this.pa_id = pa_id;
+    }
+
+    public List<Calendar> getCalendarList() {
+        return calendarList;
+    }
+
+    public void setCalendarList(List<Calendar> calendarList) {
+        this.calendarList = calendarList;
     }
 
     public String getPa_name() {

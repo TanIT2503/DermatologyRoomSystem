@@ -9,6 +9,6 @@ public interface AdminService {
 	void create(Admin admin);
 	List<Admin> findAllByName(String adminName);
 	void update(Admin admin);
-	void delete(String adminId);
-	Admin findById(String adminId);
+	void delete(int adminId);
+	Admin findById(int adminId);
 }

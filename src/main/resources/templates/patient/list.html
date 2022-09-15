@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{template::head}">
-</head>
+<head></head>
 <body>
 <div class="content">
     <div class="form mt-4 bg-light">
         <div class="container">
             <div class="row d-flex">
                 <div class="col-3 mt-3">
-                    <a class="btn btn-dark bg-dark" style="text-decoration: none; color: white"  th:href="@{}"><strong>Create new customer</strong></a>
+                    <a class="btn btn-dark bg-dark" style="text-decoration: none"  th:href="@{/patient/create}"><strong>Create new customer</strong></a>
                 </div>
                 <div class="col-9">
                     <form class="form-inline" style="margin-left: 120px" th:method="get" th:action="@{/patient/list}">
@@ -47,19 +46,19 @@
                     <th scope="row" th:text="${patient.pa_id}"></th>
                     <td th:text="${patient.pa_name}"></td>
                     <td th:text="${patient.pa_birthday}"></td>
-                    <td th:text="${patient.pa_gender}"></td>
+                    <td th:if="${patient.pa_gender}">Nam</td>
+                    <td th:if="${!patient.pa_gender}">Nữ</td>
                     <td th:text="${patient.pa_id_card}"></td>
                     <td th:text="${patient.pa_email}"></td>
                     <td th:text="${patient.pa_address}"></td>
                     <td>
-                        <a class="btn" style="border: none; background-color: white" th:href="">
+                        <a class="btn" style="border: none; background-color: white">
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABmJLR0QA/wD/AP+gvaeTAAABpElEQVRYhe3YsUsWYRwH8A8ZgSLv0BJhS+DQ0NTaH2CkSTi0GLi1BTa5eTU39GcEEk0JNjS4qARCgYMIIi2CDbo5RsNz6fu+nvry3PPcNbxfeDh4jufuc7/n4e7hGGagPMNY24jLUuAQ31QgbzTO6c0SpvAAW1jDeKuirhTYRaer771LKtl0CmwKwIW+c60jC2zgnoD8rRfZEdbkbPO0XtwGljHhHNkp+4v+gfM4Ttiqnr4Kpzz+m+7dKhws4u1ANYjLVbju6a7E5QYu9SGW+/rvYv0qXE5gElwuYDJcDmBSXGpgclxKYBZcKmA2XApgVlxd4CAv4crPF57nBtat3ElO4Bt8F1e5RoAH+FUiY3ADAWO3/A+FXcsr3MenEvcEL7CCr3gXef2z3IwcN4MvJeKlsM4OMJcSR3wFn+IRbjlH3sHnlDjiKngbk1gVpvYHpvEHH/EhFY444JRQuWns41TYru8kdJ0lBriN18JUHqflXEwMcK9sjaTtPwvXZgismyGwbobAuvnvgd0v6sfCTrjJXFugkfJ4hNG8lsqs4GcL902Xv64WoNPr/zHvAAAAAElFTkSuQmCC"/>
                         </a>
                     </td>
                     <td>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn" style="border: none; background-color: white" data-toggle="modal" data-target="#exampleModal"
-                                th:onclick="">
+                        <button type="button" class="btn" style="border: none; background-color: white" data-toggle="modal" data-target="#exampleModal">
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABmJLR0QA/wD/AP+gvaeTAAACGklEQVRYhe3XsWsUQRTH8c+dCQhKIOQU1E6CGhBEwYCIpaCFgkJIaWehlY2gNoIhrY02/gk2SWWjnRYHBsRKsbAySEgOQRGEiGexc8m5utmZ27uIcl8YuHk37zePN/Pe7jJkyJBtYRZNLIXRxMxfjShHE7u65ruDrTK1xPXHcRcHcvYpvImwLQf/V4n7RtEIwpMVNCaDRiPWoSyDI7iPU5jASzxLDGpZlsmpML+Ck1iTXYMb+J6oucFlPEC9V4EtqONh2KOQkRKR97iFq/jRn7g2qGMaj7ZaFFMkx3Ad43haPS5wFp9kGXzdD8HzuNcPocAczsUsLDviDmt+r7w72IHHeCvrfbfRxjy+ygpjRlYE812+E2jFbBx7+VtBNB/0HM6E+SEsYBGHg206rMkHEx1glQy2ZYXTucc1m4XUsS0GWzvn2wiapcRm8DPGItd2c6nAPhY0SxlEf+tmoapAaoCpz+7ZAnv+yAtJCfCLrFKrMha0okgJ8E+F0gvRBcJ/FmBL/wKM6oGkB5hv1r0Q3aSJb9TEH/FKyf9JAabewZgMfgijiAZWYzcdRJGMh1HEwDIYewcPhlHEtrWZvTiBj2G+iqNhdI5wRfYluKfLLymDqSx1/T6CC359/J0Oo0MNF22+fuU1+s4L7Kvgvx/PUxxS2gzcxBPZt+16ou+o7LivpTilvp3ATtnb82ii3zre4VsPew4ZMuSf5SeCVWKhU3QK3QAAAABJRU5ErkJggg==">
                         </button>
                     </td>

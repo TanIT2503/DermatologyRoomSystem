@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>Title</title>
 </head>
 <body>
-
+<button th:onclick="@{window.location.href='/admin/create'}"
+        style="color: #ffffff;background: #0c2445;border-radius: 8px;margin: 20px;width: 100px;height: 40px;">Create
+</button>
+<h3>đây là list admin</h3>
+<table>
+	<tr>
+		<th>id</th>
+		<th>Name</th>
+		<th>Birthday</th>
+		<th>gender</th>
+		<th>address</th>
+		<th>phone</th>
+		<th>email</th>
+		<th>idcard</th>
+		<th>user name</th>
+	</tr>
+	<th:block th:each="admin : ${admins}">
+		<tr >
+			<td th:text="${admin.adminId}"></td>
+			<td th:text=" ${admin.adminName}"></td>
+			<td th:text=" ${admin.adminBirthday}"></td>
+			<td>
+				<th:block th:if="${admin.adminGender}">
+					<h6 class="card-subtitle mb-2 text-muted col-md-7">Male</h6>
+				</th:block>
+				<th:block th:if="${!admin.adminGender}">
+					<h6 class="card-subtitle mb-2 text-muted col-md-7">Female</h6>
+				</th:block>
+			</td>
+			<td th:text=" ${admin.adminAddress}"></td>
+			<td th:text=" ${admin.adminNumberPhone}"></td>
+			<td th:text=" ${admin.adminEmail}"></td>
+			<td th:text=" ${admin.adminIdCard}"></td>
+			<td th:text=" ${admin.UserName}"></td>
+		</tr>
+	</th:block>
+</table>
 </body>
 </html>

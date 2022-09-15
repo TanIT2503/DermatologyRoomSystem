@@ -2,16 +2,15 @@ package com.cdio.dermatologroomsystem.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table
 public class Admin {
 	@Id
-	private String adminId;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int adminId;
 	private String adminName;
 	@DateTimeFormat(pattern = "yyyy-MM-dddd")
 	private Date adminBirthday;
@@ -28,24 +27,11 @@ public class Admin {
 	public Admin() {
 	}
 
-	public Admin(String adminId , String adminName , Date adminBirthday , boolean adminGender , String adminAddress , String adminNumberPhone , String adminEmail , String adminIdCard , String userName , Medical medicalId) {
-		this.adminId = adminId;
-		this.adminName = adminName;
-		this.adminBirthday = adminBirthday;
-		this.adminGender = adminGender;
-		this.adminAddress = adminAddress;
-		this.adminNumberPhone = adminNumberPhone;
-		this.adminEmail = adminEmail;
-		this.adminIdCard = adminIdCard;
-		UserName = userName;
-		this.medicalId = medicalId;
-	}
-
-	public String getAdminId() {
+	public int getAdminId() {
 		return adminId;
 	}
 
-	public void setAdminId(String adminId) {
+	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
 
@@ -118,6 +104,19 @@ public class Admin {
 	}
 
 	public void setMedicalId(Medical medicalId) {
+		this.medicalId = medicalId;
+	}
+
+	public Admin(int adminId , String adminName , Date adminBirthday , boolean adminGender , String adminAddress , String adminNumberPhone , String adminEmail , String adminIdCard , String userName , Medical medicalId) {
+		this.adminId = adminId;
+		this.adminName = adminName;
+		this.adminBirthday = adminBirthday;
+		this.adminGender = adminGender;
+		this.adminAddress = adminAddress;
+		this.adminNumberPhone = adminNumberPhone;
+		this.adminEmail = adminEmail;
+		this.adminIdCard = adminIdCard;
+		UserName = userName;
 		this.medicalId = medicalId;
 	}
 }

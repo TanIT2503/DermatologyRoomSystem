@@ -1,38 +1,38 @@
 package com.cdio.dermatologroomsystem.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name="MEDICAL")
 public class Medical {
 	@Id
-	private String medicalId;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int medicalId;
 	private String medicalName;
 	private String medicalImage;
 	private String medicalSymptom;
 
-	@OneToMany(mappedBy = "AdminId")
+	@OneToMany(mappedBy = "adminId")
 	List<Admin> AdminList = new ArrayList<>();
 
 	public Medical() {
 	}
 
-	public Medical(String medicalId , String medicalName , String medicalImage , String medicalSymptom , List<Admin> adminList) {
+	public Medical(int medicalId , String medicalName , String medicalImage , String medicalSymptom , List<Admin> adminList) {
 		this.medicalId = medicalId;
 		this.medicalName = medicalName;
 		this.medicalImage = medicalImage;
-		this.medicalSymptom = Medical.this.medicalSymptom;
+		this.medicalSymptom = medicalSymptom;
 		AdminList = adminList;
 	}
 
-	public String getMedicalId() {
+	public int getMedicalId() {
 		return medicalId;
 	}
 
-	public void setMedicalId(String medicalId) {
+	public void setMedicalId(int medicalId) {
 		this.medicalId = medicalId;
 	}
 

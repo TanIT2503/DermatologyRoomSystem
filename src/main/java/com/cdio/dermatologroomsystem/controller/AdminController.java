@@ -44,4 +44,10 @@ public class AdminController {
 		adminService.create(admin);
 		return "redirect:/admin/list";
 	}
+
+	@PostMapping("/delete")
+	public String delete(@RequestParam("id") int id){
+		adminService.delete(id);
+		return "redirect:/admin/list";
+	}
 }

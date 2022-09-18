@@ -9,6 +9,7 @@ public class Calendar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cal_id;
     private String cal_time;
+    private String cal_status;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pa_id", referencedColumnName = "pa_id")
@@ -31,6 +32,14 @@ public class Calendar {
 
     public void setCal_time(String cal_time) {
         this.cal_time = cal_time;
+    }
+
+    public String getCal_status() {
+        return cal_status;
+    }
+
+    public void setCal_status(String cal_status) {
+        this.cal_status = cal_status;
     }
 
     public Patient getPatient() {

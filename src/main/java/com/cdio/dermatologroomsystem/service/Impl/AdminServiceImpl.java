@@ -40,7 +40,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Admin findById(int adminId) {
-		return null;
+	public Admin findById(Integer adminId) {
+		return adminRepository.findById(adminId).get();
 	}
 }

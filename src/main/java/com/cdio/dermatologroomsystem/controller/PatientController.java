@@ -52,5 +52,4 @@ public class PatientController {
         patientService.delete(id);
         return "redirect:/patient/list";
     }
-
 }

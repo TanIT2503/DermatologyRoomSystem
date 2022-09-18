@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AdminRepository extends JpaRepository<Admin, String> {
+public interface AdminRepository extends JpaRepository<Admin, Integer> {
 	@Query(value = "SELECT * FROM ADMIN WHERE (ad_name like concat('%', :ad_name, '%'))", nativeQuery = true)
 	List<Admin> findAll(@Param("ad_name") String adminName);
 

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,8 +22,8 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void add(Patient patient) {
-        patientRepository.save(patient);
+    public Patient add(Patient patient) {
+        return patientRepository.save(patient);
     }
 
     @Override
@@ -35,12 +36,19 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void update(Patient patient) {
-        patientRepository.save(patient);
+    public Patient update(Patient patient) {
+        return patientRepository.save(patient);
     }
 
     @Override
     public Patient findById(int id) {
         return patientRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Patient> findAll() {
+        List<Patient> patients = new ArrayList<>();
+        patientRepository.findAll().forEach(patient -> patients.add(patient));
+        return patients;
     }
 }

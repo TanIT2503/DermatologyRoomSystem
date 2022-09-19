@@ -10,5 +10,6 @@ public interface AdminService {
 	List<Admin> findAllByName(String adminName);
 	void update(Admin admin);
 	void delete(int adminId);
-	Admin findById(int adminId);
+	Admin findById(Integer adminId);
+
 }

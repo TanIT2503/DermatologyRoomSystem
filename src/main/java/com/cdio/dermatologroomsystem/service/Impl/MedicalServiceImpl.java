@@ -50,6 +50,7 @@ public class MedicalServiceImpl implements MedicalService {
 
 	@Override
 	public List<Medical> findAllByName(String medicalName) {
-		return medicalRepository.findAllByName(medicalName);
+		List<Medical> medicals = medicalRepository.findAllByName(medicalName);
+		return medicals;
 	}
 }

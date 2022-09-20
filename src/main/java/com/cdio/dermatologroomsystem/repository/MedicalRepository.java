@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface MedicalRepository extends JpaRepository<Medical, Integer> {
-	@Query(value = "SELECT * FROM MEDICAL WHERE (ad_name like concat('%', medical_id, '%'))", nativeQuery = true)
-	List<Medical> findAllByName(@Param("medical_id") String medicalName);
+	@Query("SELECT m FROM Medical m WHERE (m.medicalName like concat('%',:medicalName, '%'))")
+	List<Medical> findAllByName(String medicalName);
 }

@@ -26,14 +26,14 @@ public class CalendarRestController {
         return new ResponseEntity<List<Calendar>>(calendarList, HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Calendar>> searchByTime(@RequestParam String cal_time) {
-        List<Calendar> calendarList = calenderService.findAllByTime(cal_time);
-        if (calendarList.isEmpty()) {
-            return new ResponseEntity<List<Calendar>>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<List<Calendar>>(calendarList, HttpStatus.OK);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<Calendar>> searchByTime(@RequestParam String cal_time) {
+//        List<Calendar> calendarList = calenderService.findAllByTime(cal_time);
+//        if (calendarList.isEmpty()) {
+//            return new ResponseEntity<List<Calendar>>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<List<Calendar>>(calendarList, HttpStatus.OK);
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Calendar> findCalendarById(@PathVariable("id") Integer id){

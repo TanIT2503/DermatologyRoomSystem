@@ -6,6 +6,7 @@ import com.cdio.dermatologroomsystem.entity.Patient;
 public class CalenderDto {
     private int cal_id;
     private String cal_time;
+    private String cal_status;
     private Patient patient;
 
     public CalenderDto() {
@@ -25,6 +26,14 @@ public class CalenderDto {
 
     public void setCal_time(String cal_time) {
         this.cal_time = cal_time;
+    }
+
+    public String getCal_status() {
+        return cal_status;
+    }
+
+    public void setCal_status(String cal_status) {
+        this.cal_status = cal_status;
     }
 
     public Patient getPatient() {

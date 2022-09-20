@@ -21,9 +21,6 @@ public class Admin {
 	private String adminIdCard;
 	private String UserName;
 
-	@ManyToOne(targetEntity = Medical.class)
-	private Medical medicalId;
-
 	public Admin() {
 	}
 
@@ -99,15 +96,8 @@ public class Admin {
 		UserName = userName;
 	}
 
-	public Medical getMedicalId() {
-		return medicalId;
-	}
 
-	public void setMedicalId(Medical medicalId) {
-		this.medicalId = medicalId;
-	}
-
-	public Admin(int adminId , String adminName , Date adminBirthday , boolean adminGender , String adminAddress , String adminNumberPhone , String adminEmail , String adminIdCard , String userName , Medical medicalId) {
+	public Admin(int adminId , String adminName , Date adminBirthday , boolean adminGender , String adminAddress , String adminNumberPhone , String adminEmail , String adminIdCard , String userName) {
 		this.adminId = adminId;
 		this.adminName = adminName;
 		this.adminBirthday = adminBirthday;
@@ -117,6 +107,5 @@ public class Admin {
 		this.adminEmail = adminEmail;
 		this.adminIdCard = adminIdCard;
 		UserName = userName;
-		this.medicalId = medicalId;
 	}
 }

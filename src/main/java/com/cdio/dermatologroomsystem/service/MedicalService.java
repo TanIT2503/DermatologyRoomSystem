@@ -7,8 +7,10 @@ import java.util.List;
 
 public interface MedicalService {
 	List<Medical> findAll();
-	void create(Medical medical);
-	void update(Medical medical);
+	Medical create(Medical medical);
+	Medical update(Medical medical);
 	void delete(int medicalId);
 	Medical findById(int medicalId);
+
+	List<Medical> findAllByName(String medicalName);
 }

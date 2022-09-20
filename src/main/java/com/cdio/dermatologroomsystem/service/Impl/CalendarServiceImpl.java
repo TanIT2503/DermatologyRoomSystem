@@ -2,16 +2,14 @@ package com.cdio.dermatologroomsystem.service.Impl;
 
 import com.cdio.dermatologroomsystem.entity.Calendar;
 import com.cdio.dermatologroomsystem.repository.CalenderRepository;
-import com.cdio.dermatologroomsystem.service.CalenderService;
+import com.cdio.dermatologroomsystem.service.CalendarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CalendarServiceImpl implements CalenderService {
+public class CalendarServiceImpl implements CalendarService {
     @Autowired
     private CalenderRepository calenderRepository;
 
@@ -21,25 +19,30 @@ public class CalendarServiceImpl implements CalenderService {
     }
 
     @Override
-    public void add(Calendar calendar) {
-        calenderRepository.save(calendar);
+    public Calendar add(Calendar calendar) {
+        return calenderRepository.save(calendar);
     }
 
     @Override
     public void delete(int id) {
         Calendar calendar = calenderRepository.findById(id).orElse(null);
         if (calendar!=null){
-            calenderRepository.save(calendar);
+            calenderRepository.delete(calendar);
         }
     }
 
     @Override
-    public void update(Calendar calendar) {
-        calenderRepository.save(calendar);
+    public Calendar update(Calendar calendar) {
+        return calenderRepository.save(calendar);
     }
 
     @Override
     public Calendar findById(int id) {
         return calenderRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Calendar> findAll() {
+        return calenderRepository.findAll();
     }
 }

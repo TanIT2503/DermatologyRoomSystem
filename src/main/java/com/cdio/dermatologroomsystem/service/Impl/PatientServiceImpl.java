@@ -17,8 +17,8 @@ public class PatientServiceImpl implements PatientService {
     private PatientRepository patientRepository;
 
     @Override
-    public List<Patient> findAllByName(String name) {
-        return patientRepository.findAllByName(name);
+    public List<Patient> findAllByName(String pa_name) {
+        return patientRepository.findAllByName(pa_name);
     }
 
     @Override

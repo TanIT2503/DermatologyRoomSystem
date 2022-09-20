@@ -26,6 +26,10 @@ public class MedicalRestController {
         return new ResponseEntity<List<Medical>>(medicalList, HttpStatus.OK);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<Medical>> searchMedicals(@RequestParam("medicalName") String medicalName){
+        return ResponseEntity.ok(medicalService.findAllByName(medicalName));
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Medical> findMedicalById(@PathVariable("id") Integer id){
         try {
@@ -37,6 +41,10 @@ public class MedicalRestController {
     }
 
     @PostMapping
+    public ResponseEntity<Medical> saveMedical(@RequestBody Medical medical){
+        return new ResponseEntity<>(medicalService.create(medical), HttpStatus.CREATED);
+    }
+    @PutMapping("/{id}")
     private ResponseEntity<Medical> updateMedical(@PathVariable("id") Integer id, @RequestBody Medical medical){
         Medical medicalFind = medicalService.findById(id);
         try{

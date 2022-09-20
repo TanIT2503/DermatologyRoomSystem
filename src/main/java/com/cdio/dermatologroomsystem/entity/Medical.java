@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="MEDICAL")
+@Table(name="medical")
 public class Medical {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -14,18 +14,14 @@ public class Medical {
 	private String medicalImage;
 	private String medicalSymptom;
 
-	@OneToMany(mappedBy = "adminId")
-	List<Admin> AdminList = new ArrayList<>();
-
 	public Medical() {
 	}
 
-	public Medical(int medicalId , String medicalName , String medicalImage , String medicalSymptom , List<Admin> adminList) {
+	public Medical(int medicalId , String medicalName , String medicalImage , String medicalSymptom) {
 		this.medicalId = medicalId;
 		this.medicalName = medicalName;
 		this.medicalImage = medicalImage;
 		this.medicalSymptom = medicalSymptom;
-		AdminList = adminList;
 	}
 
 	public int getMedicalId() {
@@ -60,11 +56,4 @@ public class Medical {
 		this.medicalSymptom = medicalSymptom;
 	}
 
-	public List<Admin> getAdminList() {
-		return AdminList;
-	}
-
-	public void setAdminList(List<Admin> adminList) {
-		AdminList = adminList;
-	}
 }

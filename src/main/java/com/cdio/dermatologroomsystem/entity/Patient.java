@@ -21,7 +21,7 @@ public class Patient {
     private String pa_email;
     private String username;
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient",fetch = FetchType.EAGER)
     @JsonBackReference
     private List<Calendar> calendarList = new ArrayList<>();
 

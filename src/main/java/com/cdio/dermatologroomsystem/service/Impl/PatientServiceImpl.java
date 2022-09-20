@@ -32,7 +32,6 @@ public class PatientServiceImpl implements PatientService {
         if (patient!=null){
             patientRepository.delete(patient);
         }
-
     }
 
     @Override

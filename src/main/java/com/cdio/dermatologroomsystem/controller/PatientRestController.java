@@ -26,6 +26,10 @@ public class PatientRestController {
         return new ResponseEntity<List<Patient>>(patientList, HttpStatus.OK);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<Patient>> searchPatients(@RequestParam("pa_name") String pa_name){
+        return ResponseEntity.ok(patientService.findAllByName(pa_name));
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Patient> findPatientById(@PathVariable("id") Integer id){
         try{

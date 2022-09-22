@@ -14,7 +14,7 @@ import java.util.List;
 public interface PatientRepository extends JpaRepository<Patient, Integer> {
     @Query(value = "SELECT * FROM PATIENT where pa_name like concat('%', :pa_name,'%') ", nativeQuery = true,
     countQuery = "SELECT * FROM PATIENT where pa_name like concat('%', :pa_name,'%') abc")
-    List<Patient> findAllByName(@Param("pa_name") String pa_name);
+    List<Patient> findAllByName(String pa_name);
 
 
 }

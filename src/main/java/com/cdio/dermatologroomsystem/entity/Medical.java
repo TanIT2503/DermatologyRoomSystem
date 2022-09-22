@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name="medical")
 public class Medical {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int medicalId;
 	private String medicalName;
 	private String medicalImage;

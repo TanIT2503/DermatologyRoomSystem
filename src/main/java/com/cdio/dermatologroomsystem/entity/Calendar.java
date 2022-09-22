@@ -8,7 +8,11 @@ public class Calendar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cal_id;
-    private String cal_time;
+    private String cal_date;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "hours_id", referencedColumnName = "hours_id")
+    private Hours hours;
     private String cal_status;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -26,12 +30,20 @@ public class Calendar {
         this.cal_id = cal_id;
     }
 
-    public String getCal_time() {
-        return cal_time;
+    public String getCal_date() {
+        return cal_date;
     }
 
-    public void setCal_time(String cal_time) {
-        this.cal_time = cal_time;
+    public void setCal_date(String cal_date) {
+        this.cal_date = cal_date;
+    }
+
+    public Hours getHours() {
+        return hours;
+    }
+
+    public void setHours(Hours hours) {
+        this.hours = hours;
     }
 
     public String getCal_status() {

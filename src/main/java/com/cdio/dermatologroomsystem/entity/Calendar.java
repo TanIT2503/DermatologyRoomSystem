@@ -10,12 +10,12 @@ public class Calendar {
     private int cal_id;
     private String cal_date;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "hours_id", referencedColumnName = "hours_id")
     private Hours hours;
     private String cal_status;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "pa_id", referencedColumnName = "pa_id")
     private Patient patient;
 

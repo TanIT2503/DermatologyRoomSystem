@@ -19,6 +19,7 @@ public class Patient {
     private String pa_phone;
     private String pa_id_card;
     private String pa_email;
+    @
     private String username;
 
     @OneToMany(mappedBy = "patient",fetch = FetchType.EAGER)

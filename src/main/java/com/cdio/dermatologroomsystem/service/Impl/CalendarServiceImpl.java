@@ -14,8 +14,8 @@ public class CalendarServiceImpl implements CalendarService {
     private CalenderRepository calenderRepository;
 
     @Override
-    public List<Calendar> findAllByTime(String time) {
-        return calenderRepository.findAllByTime(time);
+    public List<Calendar> findAllByTime(String cal_time) {
+        return calenderRepository.findAllByTime(cal_time);
     }
 
     @Override

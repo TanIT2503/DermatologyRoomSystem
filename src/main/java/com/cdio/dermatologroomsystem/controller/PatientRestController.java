@@ -30,6 +30,7 @@ public class PatientRestController {
     public ResponseEntity<List<Patient>> searchPatients(@RequestParam("pa_name") String pa_name){
         return ResponseEntity.ok(patientService.findAllByName(pa_name));
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Patient> findPatientById(@PathVariable("id") Integer id){
         try{

@@ -13,7 +13,9 @@ public class Calendar {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "hours_id", referencedColumnName = "hours_id")
     private Hours hours;
-    private String cal_status;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "cal_status_id", referencedColumnName = "cal_status_id")
+    private CalendarStatus cal_status;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "pa_id", referencedColumnName = "pa_id")
@@ -46,11 +48,11 @@ public class Calendar {
         this.hours = hours;
     }
 
-    public String getCal_status() {
+    public CalendarStatus getCal_status() {
         return cal_status;
     }
 
-    public void setCal_status(String cal_status) {
+    public void setCal_status(CalendarStatus cal_status) {
         this.cal_status = cal_status;
     }
 

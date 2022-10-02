@@ -23,8 +23,6 @@ public class Admin {
 	@JoinColumn(name = "username")
 	private Account account;
 
-
-
 	public Admin() {
 	}
 

@@ -1,6 +1,7 @@
 package com.cdio.dermatologroomsystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Calendar {
     private int cal_id;
     private String cal_date;
 
-//    @ManyToOne(cascade = CascadeType.MERGE)
+    //    @ManyToOne(cascade = CascadeType.MERGE)
 //    @JoinColumn(name = "hours_id", referencedColumnName = "hours_id")
 //    private Hours hours;
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -29,8 +30,6 @@ public class Calendar {
 //    @JsonBackReference
 //    private List<DoctorCalendar> doctorCalendars = new ArrayList<>();
 
-    public Calendar() {
-    }
 
     public int getCal_id() {
         return cal_id;
@@ -48,6 +47,7 @@ public class Calendar {
         this.cal_date = cal_date;
     }
 
+    @JsonBackReference
     public CalendarStatus getCal_status() {
         return cal_status;
     }
@@ -56,6 +56,7 @@ public class Calendar {
         this.cal_status = cal_status;
     }
 
+    @JsonBackReference
     public Patient getPatient() {
         return patient;
     }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="medical")
+@Table
 public class Medical {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

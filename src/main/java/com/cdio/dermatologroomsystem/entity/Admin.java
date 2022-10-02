@@ -19,7 +19,11 @@ public class Admin {
 	private String adminNumberPhone;
 	private String adminEmail;
 	private String adminIdCard;
-	private String UserName;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "username")
+	private Account account;
+
+
 
 	public Admin() {
 	}
@@ -88,24 +92,11 @@ public class Admin {
 		this.adminIdCard = adminIdCard;
 	}
 
-	public String getUserName() {
-		return UserName;
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setUserName(String userName) {
-		UserName = userName;
-	}
-
-
-	public Admin(int adminId , String adminName , Date adminBirthday , boolean adminGender , String adminAddress , String adminNumberPhone , String adminEmail , String adminIdCard , String userName) {
-		this.adminId = adminId;
-		this.adminName = adminName;
-		this.adminBirthday = adminBirthday;
-		this.adminGender = adminGender;
-		this.adminAddress = adminAddress;
-		this.adminNumberPhone = adminNumberPhone;
-		this.adminEmail = adminEmail;
-		this.adminIdCard = adminIdCard;
-		UserName = userName;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 }

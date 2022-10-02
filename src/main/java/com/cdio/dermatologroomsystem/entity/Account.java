@@ -3,18 +3,29 @@ package com.cdio.dermatologroomsystem.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "patient")
+@Table
 public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int account_id;
 	private String username;
 	private String password;
-	@OneToMany(mappedBy = "account_id")
-	private List<AccountRole> accountRoles = new ArrayList<>();
 
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "account_role",
+			joinColumns = {@JoinColumn(name = "account_id")},
+			inverseJoinColumns = {@JoinColumn(name = "role_id")})
+	private Set<Role> roles;
+
+	@OneToOne(mappedBy = "account")
+	private Patient patient ;
+	@OneToOne(mappedBy = "account")
+	private Admin admin ;
+	@OneToOne(mappedBy = "account")
+	private Doctor doctor ;
 	public Account() {
 	}
 
@@ -42,11 +53,35 @@ public class Account {
 		this.password = password;
 	}
 
-	public List<AccountRole> getAccountRoles() {
-		return accountRoles;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public void setAccountRoles(List<AccountRole> accountRoles) {
-		this.accountRoles = accountRoles;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
 	}
 }

@@ -1,5 +1,7 @@
 package com.cdio.dermatologroomsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,7 @@ public class DoctorCalendar {
 
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "doctor_id", referencedColumnName = "doctor_id")
+	@JsonBackReference
 	private Doctor doctor_id;
 
 	@ManyToOne(cascade = CascadeType.MERGE)

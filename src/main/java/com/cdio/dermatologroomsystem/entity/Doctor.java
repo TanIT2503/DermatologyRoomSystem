@@ -1,6 +1,10 @@
 package com.cdio.dermatologroomsystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -8,7 +12,7 @@ import java.util.Calendar;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "doctor")
 public class Doctor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +26,12 @@ public class Doctor {
 	private String doctor_email;
 
 	@OneToMany(mappedBy = "doctor_id",fetch = FetchType.EAGER)
-	@JsonBackReference
+	@JsonManagedReference
 	private List<DoctorCalendar> doctorCalendars = new ArrayList<>();
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "username")
+	@JsonManagedReference
 	private Account account;
 
 	public Doctor() {

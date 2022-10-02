@@ -1,12 +1,14 @@
 package com.cdio.dermatologroomsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "account")
 public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +27,7 @@ public class Account {
 	@OneToOne(mappedBy = "account")
 	private Admin admin ;
 	@OneToOne(mappedBy = "account")
+	@JsonBackReference
 	private Doctor doctor ;
 	public Account() {
 	}

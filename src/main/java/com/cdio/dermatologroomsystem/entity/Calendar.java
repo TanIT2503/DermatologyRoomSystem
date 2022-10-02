@@ -1,18 +1,22 @@
 package com.cdio.dermatologroomsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "calendar")
+@Table
 public class Calendar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cal_id;
     private String cal_date;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "hours_id", referencedColumnName = "hours_id")
-    private Hours hours;
+//    @ManyToOne(cascade = CascadeType.MERGE)
+//    @JoinColumn(name = "hours_id", referencedColumnName = "hours_id")
+//    private Hours hours;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "cal_status_id", referencedColumnName = "cal_status_id")
     private CalendarStatus cal_status;
@@ -20,6 +24,10 @@ public class Calendar {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "pa_id", referencedColumnName = "pa_id")
     private Patient patient;
+
+//    @OneToMany(mappedBy = "cal_id",fetch = FetchType.EAGER)
+//    @JsonBackReference
+//    private List<DoctorCalendar> doctorCalendars = new ArrayList<>();
 
     public Calendar() {
     }
@@ -40,14 +48,6 @@ public class Calendar {
         this.cal_date = cal_date;
     }
 
-    public Hours getHours() {
-        return hours;
-    }
-
-    public void setHours(Hours hours) {
-        this.hours = hours;
-    }
-
     public CalendarStatus getCal_status() {
         return cal_status;
     }
@@ -63,4 +63,14 @@ public class Calendar {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
+
+
+
+    //    public Patient getPatient() {
+//        return patient;
+//    }
+//
+//    public void setPatient(Patient patient) {
+//        this.patient = patient;
+//    }
 }

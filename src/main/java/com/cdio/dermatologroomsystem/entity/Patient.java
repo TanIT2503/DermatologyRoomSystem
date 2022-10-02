@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "patient")
+@Table
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,12 +19,13 @@ public class Patient {
     private String pa_phone;
     private String pa_id_card;
     private String pa_email;
-    @
-    private String username;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "username")
+    private Account account;
 
-    @OneToMany(mappedBy = "patient",fetch = FetchType.EAGER)
-    @JsonBackReference
-    private List<Calendar> calendarList = new ArrayList<>();
+//    @OneToMany(mappedBy = "patient",fetch = FetchType.EAGER)
+//    @JsonBackReference
+//    private List<Calendar> calendarList = new ArrayList<>();
 
     public Patient() {
     }
@@ -35,22 +36,6 @@ public class Patient {
 
     public void setPa_id(int pa_id) {
         this.pa_id = pa_id;
-    }
-
-    public List<Calendar> getCalendarList() {
-        return calendarList;
-    }
-
-    public void setCalendarList(List<Calendar> calendarList) {
-        this.calendarList = calendarList;
-    }
-
-    public String getPa_phone() {
-        return pa_phone;
-    }
-
-    public void setPa_phone(String pa_phone) {
-        this.pa_phone = pa_phone;
     }
 
     public String getPa_name() {
@@ -85,6 +70,14 @@ public class Patient {
         this.pa_address = pa_address;
     }
 
+    public String getPa_phone() {
+        return pa_phone;
+    }
+
+    public void setPa_phone(String pa_phone) {
+        this.pa_phone = pa_phone;
+    }
+
     public String getPa_id_card() {
         return pa_id_card;
     }
@@ -101,11 +94,19 @@ public class Patient {
         this.pa_email = pa_email;
     }
 
-    public String getUsername() {
-        return username;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAccount(Account account) {
+        this.account = account;
     }
+
+//    public List<Calendar> getCalendarList() {
+//        return calendarList;
+//    }
+//
+//    public void setCalendarList(List<Calendar> calendarList) {
+//        this.calendarList = calendarList;
+//    }
 }

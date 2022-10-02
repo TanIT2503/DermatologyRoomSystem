@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "hours")
+@Table
 public class Hours {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int hours_id;
 	private String hours;
-	@OneToMany(mappedBy = "hours",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "hours_id",fetch = FetchType.EAGER)
 	@JsonBackReference
-	private List<Calendar> calendarList = new ArrayList<>();
+	private List<DoctorCalendar> doctorCalendars = new ArrayList<>();
 
 	public Hours() {
 	}
@@ -36,11 +36,11 @@ public class Hours {
 		this.hours = hours;
 	}
 
-	public List<Calendar> getCalendarList() {
-		return calendarList;
+	public List<DoctorCalendar> getDoctorCalendars() {
+		return doctorCalendars;
 	}
 
-	public void setCalendarList(List<Calendar> calendarList) {
-		this.calendarList = calendarList;
+	public void setDoctorCalendars(List<DoctorCalendar> doctorCalendars) {
+		this.doctorCalendars = doctorCalendars;
 	}
 }

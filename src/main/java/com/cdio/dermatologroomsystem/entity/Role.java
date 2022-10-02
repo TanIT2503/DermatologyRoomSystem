@@ -11,6 +11,5 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int role_id;
 	private String role_name;
-	@OneToMany(mappedBy = "role_id")
-	private List<AccountRole> accountRoles = new ArrayList<>();
+
 }

@@ -60,7 +60,7 @@ public class JwtServiceImpl implements UserDetailsService {
 		UserDetails userDetails = loadUserByUsername(userName);
 		String newGeneratedToken = jwtUtils.generateToken(userDetails);
 
-		Account account = accountRepository.findById(userName).get();
+		Account account = accountRepository.findByUsername(userName);
 		return new JwtResponse(account, newGeneratedToken);
 	}
 }

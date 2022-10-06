@@ -1,22 +1,35 @@
 package com.cdio.dermatologroomsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "calendar")
+@Table
 public class Calendar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cal_id;
-    private String cal_time;
-    private String cal_status;
+    private String cal_date;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    //    @ManyToOne(cascade = CascadeType.MERGE)
+//    @JoinColumn(name = "hours_id", referencedColumnName = "hours_id")
+//    private Hours hours;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "cal_status_id", referencedColumnName = "cal_status_id")
+    private CalendarStatus cal_status;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "pa_id", referencedColumnName = "pa_id")
     private Patient patient;
 
-    public Calendar() {
-    }
+//    @OneToMany(mappedBy = "cal_id",fetch = FetchType.EAGER)
+//    @JsonBackReference
+//    private List<DoctorCalendar> doctorCalendars = new ArrayList<>();
+
 
     public int getCal_id() {
         return cal_id;
@@ -26,22 +39,24 @@ public class Calendar {
         this.cal_id = cal_id;
     }
 
-    public String getCal_time() {
-        return cal_time;
+    public String getCal_date() {
+        return cal_date;
     }
 
-    public void setCal_time(String cal_time) {
-        this.cal_time = cal_time;
+    public void setCal_date(String cal_date) {
+        this.cal_date = cal_date;
     }
 
-    public String getCal_status() {
+    @JsonBackReference
+    public CalendarStatus getCal_status() {
         return cal_status;
     }
 
-    public void setCal_status(String cal_status) {
+    public void setCal_status(CalendarStatus cal_status) {
         this.cal_status = cal_status;
     }
 
+    @JsonBackReference
     public Patient getPatient() {
         return patient;
     }
@@ -49,4 +64,14 @@ public class Calendar {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
+
+
+
+    //    public Patient getPatient() {
+//        return patient;
+//    }
+//
+//    public void setPatient(Patient patient) {
+//        this.patient = patient;
+//    }
 }

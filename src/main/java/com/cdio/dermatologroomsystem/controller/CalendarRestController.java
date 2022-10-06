@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/calendar")
 public class CalendarRestController {
@@ -26,14 +27,10 @@ public class CalendarRestController {
         return new ResponseEntity<List<Calendar>>(calendarList, HttpStatus.OK);
     }
 
-//    @GetMapping
-//    public ResponseEntity<List<Calendar>> searchByTime(@RequestParam String cal_time) {
-//        List<Calendar> calendarList = calenderService.findAllByTime(cal_time);
-//        if (calendarList.isEmpty()) {
-//            return new ResponseEntity<List<Calendar>>(HttpStatus.NO_CONTENT);
-//        }
-//        return new ResponseEntity<List<Calendar>>(calendarList, HttpStatus.OK);
-//    }
+    @GetMapping("/search")
+    public ResponseEntity<List<Calendar>> searchByTime(@RequestParam("cal_time") String cal_time) {
+        return ResponseEntity.ok(calenderService.findAllByTime(cal_time));
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Calendar> findCalendarById(@PathVariable("id") Integer id){

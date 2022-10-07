@@ -29,9 +29,20 @@ public class JwtServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return null;
+		Account account = accountRepository.findByUsername(username);
+
+		if (account != null) {
+			return new org.springframework.security.core.userdetails.User(
+					account.getUsername(),
+					account.getPassword(),
+					getAuthority(account)
+			);
+		} else {
+			throw new UsernameNotFoundException("User not found with username: " + username);
+		}
 	}
 
 	private void authenticate(String userName, String userPassword) throws Exception {

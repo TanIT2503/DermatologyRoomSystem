@@ -12,4 +12,7 @@ public interface AccountService {
     Account findByUsername(String username);
     Account findById(int id);
     void addRoleToAccount(String username, int roleId);
+    void initRoleAndAccount();
+    Boolean existAccountByUsername(String username);
+    String getEncodedPassword(String password);
 }

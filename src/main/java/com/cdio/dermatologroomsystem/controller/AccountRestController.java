@@ -2,15 +2,17 @@ package com.cdio.dermatologroomsystem.controller;
 
 
 import com.cdio.dermatologroomsystem.entity.Account;
-import com.cdio.dermatologroomsystem.entity.Doctor;
+import com.cdio.dermatologroomsystem.entity.Patient;
 import com.cdio.dermatologroomsystem.entity.Role;
 import com.cdio.dermatologroomsystem.service.AccountService;
+import com.cdio.dermatologroomsystem.service.PatientService;
 import com.cdio.dermatologroomsystem.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -23,6 +25,14 @@ public class AccountRestController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private PatientService patientService;
+
+    @PostConstruct
+    public void initRoleAndAccount(){
+        accountService.initRoleAndAccount();
+    }
 
     @GetMapping
     public ResponseEntity<List<Account>> findAll(){
@@ -79,5 +89,10 @@ public class AccountRestController {
         }
         accountService.addRoleToAccount(username,roleId);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping("/createPatient")
+    public ResponseEntity<?> createAccountForNewPatient(@RequestBody Patient patient){
+        return new ResponseEntity<>(patientService.add(patient),HttpStatus.CREATED);
     }
 }

@@ -16,19 +16,19 @@ public class Account {
 	private String username;
 	private String password;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinTable(name = "account_role",
 			joinColumns = {@JoinColumn(name = "account_id")},
 			inverseJoinColumns = {@JoinColumn(name = "role_id")})
 	private Set<Role> roles;
 
-	@OneToOne(mappedBy = "account")
-	private Patient patient ;
-	@OneToOne(mappedBy = "account")
-	private Admin admin ;
-	@OneToOne(mappedBy = "account")
-	@JsonBackReference
-	private Doctor doctor ;
+//	@OneToOne(mappedBy = "account")
+//	private Patient patient ;
+//	@OneToOne(mappedBy = "account")
+//	private Admin admin ;
+//	@OneToOne(mappedBy = "account")
+//	@JsonBackReference
+//	private Doctor doctor ;
 	public Account() {
 	}
 
@@ -62,30 +62,6 @@ public class Account {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
-	}
-
-	public Patient getPatient() {
-		return patient;
-	}
-
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
-
-	public Admin getAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(Admin admin) {
-		this.admin = admin;
-	}
-
-	public Doctor getDoctor() {
-		return doctor;
-	}
-
-	public void setDoctor(Doctor doctor) {
-		this.doctor = doctor;
 	}
 
 }

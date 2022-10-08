@@ -9,6 +9,9 @@ public class JwtResponse {
 	public JwtResponse() {
 	}
 
+	public JwtResponse(String jwtToken) {
+		this.jwtToken = jwtToken;
+	}
 
 	public JwtResponse(Account account , String jwtToken) {
 		this.account = account;

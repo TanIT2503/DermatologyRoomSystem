@@ -1,6 +1,8 @@
 package com.cdio.dermatologroomsystem.service.Impl;
 
 import com.cdio.dermatologroomsystem.entity.Patient;
+import com.cdio.dermatologroomsystem.entity.Role;
+import com.cdio.dermatologroomsystem.repository.AccountRepository;
 import com.cdio.dermatologroomsystem.repository.PatientRepository;
 import com.cdio.dermatologroomsystem.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +11,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class PatientServiceImpl implements PatientService {
     @Autowired
     private PatientRepository patientRepository;
+
+    @Autowired
+    private AccountRepository accountRepository;
 
     @Override
     public List<Patient> findAllByName(String pa_name) {
@@ -23,7 +30,15 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Patient add(Patient patient) {
-        return patientRepository.save(patient);
+        patientRepository.save(patient);
+        Set<Role> roleSet = new HashSet<>();
+        Role role = new Role();
+        role.setRole_id(3);
+        roleSet.add(role);
+        patient.getAccount().setRoles(roleSet);
+        accountRepository.save(patient.getAccount());
+        patientRepository.save(patient);
+        return patient;
     }
 
     @Override
@@ -49,5 +64,10 @@ public class PatientServiceImpl implements PatientService {
         List<Patient> patients = new ArrayList<>();
         patientRepository.findAll().forEach(patient -> patients.add(patient));
         return patients;
+    }
+
+    @Override
+    public List<Patient> search(String name) {
+        return patientRepository.search(name);
     }
 }

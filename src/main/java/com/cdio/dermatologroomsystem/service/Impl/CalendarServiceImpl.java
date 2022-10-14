@@ -45,4 +45,9 @@ public class CalendarServiceImpl implements CalendarService {
     public List<Calendar> findAll() {
         return calenderRepository.findAll();
     }
+
+    @Override
+    public List<Calendar> findByPatientId(int pa_id) {
+        return calenderRepository.findByPatientId(pa_id);
+    }
 }

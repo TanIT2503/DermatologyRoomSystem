@@ -1,6 +1,7 @@
 package com.cdio.dermatologroomsystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class Patient {
     private String pa_email;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "username")
+    @Nullable
     private Account account;
 
 //    @OneToMany(mappedBy = "patient",fetch = FetchType.EAGER)

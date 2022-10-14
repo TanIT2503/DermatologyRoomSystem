@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/api/patient")
 public class PatientRestController {
@@ -25,12 +25,6 @@ public class PatientRestController {
         }
         return new ResponseEntity<List<Patient>>(patientList, HttpStatus.OK);
     }
-
-    @GetMapping("/search")
-    public ResponseEntity<List<Patient>> searchPatients(@RequestParam("pa_name") String pa_name){
-        return ResponseEntity.ok(patientService.findAllByName(pa_name));
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<Patient> findPatientById(@PathVariable("id") Integer id){
         try{
@@ -66,5 +60,14 @@ public class PatientRestController {
         }catch (NoSuchElementException e){
             return new ResponseEntity<Patient>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Patient>> search(@RequestParam(defaultValue = "") String name) {
+        List<Patient> patients = patientService.search(name);
+        if (patients.isEmpty()){
+            return new ResponseEntity<List<Patient>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Patient>>(patients, HttpStatus.OK);
     }
 }

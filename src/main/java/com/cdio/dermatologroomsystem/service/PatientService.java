@@ -3,6 +3,7 @@ package com.cdio.dermatologroomsystem.service;
 import com.cdio.dermatologroomsystem.entity.Patient;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface PatientService {
     Patient update(Patient patient);
     public Patient findById(int id);
     List<Patient> findAll();
+    List<Patient> search( String name);
 }

@@ -68,4 +68,13 @@ public class CalendarRestController {
             return new ResponseEntity<Calendar>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/list-Cal/{id}")
+    public ResponseEntity<List<Calendar>> findAllByPatientId(@PathVariable("id") int id) {
+        List<Calendar> calendarList = calenderService.findByPatientId(id);
+        if (calendarList.isEmpty()) {
+            return new ResponseEntity<List<Calendar>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Calendar>>(calendarList, HttpStatus.OK);
+    }
 }

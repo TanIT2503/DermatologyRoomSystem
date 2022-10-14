@@ -1,6 +1,8 @@
 package com.cdio.dermatologroomsystem.service;
 
 import com.cdio.dermatologroomsystem.entity.Account;
+import com.cdio.dermatologroomsystem.entity.AccountDoctor;
+import com.cdio.dermatologroomsystem.entity.AccountPatient;
 
 import java.util.List;
 
@@ -15,4 +17,7 @@ public interface AccountService {
     void initRoleAndAccount();
     Boolean existAccountByUsername(String username);
     String getEncodedPassword(String password);
+    void createPatientAccount(AccountPatient accountPatient);
+    void createDoctorAccount(AccountDoctor accountDoctor);
+    List<String> findAllUsername();
 }

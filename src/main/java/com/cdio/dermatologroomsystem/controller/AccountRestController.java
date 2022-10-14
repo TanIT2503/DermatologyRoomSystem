@@ -1,9 +1,7 @@
 package com.cdio.dermatologroomsystem.controller;
 
 
-import com.cdio.dermatologroomsystem.entity.Account;
-import com.cdio.dermatologroomsystem.entity.Patient;
-import com.cdio.dermatologroomsystem.entity.Role;
+import com.cdio.dermatologroomsystem.entity.*;
 import com.cdio.dermatologroomsystem.service.AccountService;
 import com.cdio.dermatologroomsystem.service.PatientService;
 import com.cdio.dermatologroomsystem.service.RoleService;
@@ -53,9 +51,16 @@ public class AccountRestController {
         }
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Account> saveAccount(@RequestBody Account account){
-        return new ResponseEntity<Account>(accountService.addAccount(account), HttpStatus.OK);
+    @PostMapping("/create-Patient")
+    public ResponseEntity<?> saveAccount(@RequestBody AccountPatient accountPatient){
+        accountService.createPatientAccount(accountPatient);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping("/create-Doctor")
+    public ResponseEntity<?> saveAccountDoctor(@RequestBody AccountDoctor accountDoctor){
+        accountService.createDoctorAccount(accountDoctor);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{username}")
@@ -94,5 +99,13 @@ public class AccountRestController {
     @PostMapping("/createPatient")
     public ResponseEntity<?> createAccountForNewPatient(@RequestBody Patient patient){
         return new ResponseEntity<>(patientService.add(patient),HttpStatus.CREATED);
+    }
+    @GetMapping("/list-Username")
+    public ResponseEntity<List<String>> findAllUsername() {
+        List<String> allUsername = accountService.findAllUsername();
+        if (allUsername.isEmpty()){
+            return new ResponseEntity<List<String>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<String>>(allUsername, HttpStatus.OK);
     }
 }

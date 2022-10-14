@@ -12,4 +12,5 @@ public interface CalendarService {
     Calendar findById(int id);
 
     List<Calendar> findAll();
+    List<Calendar> findByPatientId(int pa_id);
 }

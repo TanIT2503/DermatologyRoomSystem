@@ -65,4 +65,9 @@ public class PatientServiceImpl implements PatientService {
         patientRepository.findAll().forEach(patient -> patients.add(patient));
         return patients;
     }
+
+    @Override
+    public List<Patient> search(String name) {
+        return patientRepository.search(name);
+    }
 }
